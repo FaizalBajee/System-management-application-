@@ -1,0 +1,7 @@
+{
+  "name": "masterform",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
