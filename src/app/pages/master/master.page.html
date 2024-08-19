@@ -1,0 +1,213 @@
+<ion-content [fullscreen]="true">
+    <ion-label class="header" (click)="logout()">Master</ion-label>
+    <form [formGroup]="masterForm" (ngSubmit)="addMaster()">
+        <ion-grid>
+            <ion-row class="labels">
+                <ion-col>Master Type</ion-col>
+                <ion-col>Unit</ion-col>
+                <ion-col>Location</ion-col>
+                <ion-col>Material Type</ion-col>
+                <ion-col>ID NO</ion-col>
+            </ion-row>
+            <ion-row class="inputs">
+                <ion-col>
+                    <ion-select fill="outline" formControlName="master_type" interface="popover"
+                        (ionChange)="onMasterChange($event)" placeholder="master type">
+                        <ion-select-option *ngFor="let data of masterType"
+                            [value]="{ id:data.id , master:data.master_type , masterCode:data.master_code }">{{data.master_type}}</ion-select-option>
+                    </ion-select>
+                    <ion-note
+                        *ngIf="masterForm.get('master_type')?.touched && masterForm.get('master_type')?.invalid">please
+                        fill this item</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-select fill="outline" formControlName="unit" (ionChange)="onUnitChange($event)"
+                        interface="popover" placeholder="Unit">
+                        <ion-select-option *ngFor="let data of unit" [value]="{ unit: data.unit,id: data.id }">
+                            {{data.unit}}
+                        </ion-select-option>
+                    </ion-select>
+                    <ion-note *ngIf="masterForm.get('unit')?.touched && masterForm.get('unit')?.invalid">please
+                        fill this item</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-select fill="outline" formControlName="location" interface="popover" placeholder="Location">
+                        <ion-select-option *ngFor="let data of availableLocations" [value]="data.location">{{
+                            data.location }}</ion-select-option>
+                    </ion-select>
+                    <ion-note *ngIf="masterForm.get('location')?.touched && masterForm.get('location')?.invalid">please
+                        fill this item</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-select fill="outline" (ionChange)="onMaterialChange($event)" formControlName="material_type"
+                        interface="popover" placeholder="Matirial Type">
+                        <ion-select-option *ngFor="let data of availableMaterialType"
+                            [value]="data.material_type">{{data.material_type}}</ion-select-option>
+                    </ion-select>
+                    <ion-note
+                        *ngIf="masterForm.get('material_type')?.touched && masterForm.get('material_type')?.invalid">please
+                        fill this item</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="id_no" placeholder="ID NO" [readonly]="true" fill="outline"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row class="labels">
+                <ion-col>User</ion-col>
+                <ion-col>Monitor</ion-col>
+                <ion-col>KeyBoard</ion-col>
+                <ion-col>Mouse</ion-col>
+                <ion-col>Ram</ion-col>
+            </ion-row>
+            <ion-row class="inputs">
+                <ion-col>
+                    <ion-input formControlName="user" placeholder="user" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('user')?.touched && masterForm.get('user')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="monitor" placeholder="monitor" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('monitor')?.touched && masterForm.get('monitor')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="keyboard" placeholder="keyboard" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('keyboard')?.touched && masterForm.get('keyboard')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="mouse" placeholder="mouse" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('mouse')?.touched && masterForm.get('mouse')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="ram" placeholder="Ram" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('ram')?.touched && masterForm.get('ram')?.invalid">invalid</ion-note>
+                </ion-col>
+            </ion-row>
+            <ion-row class="labels">
+                <ion-col>Processer</ion-col>
+                <ion-col>Mother Board</ion-col>
+                <ion-col>Cabinet</ion-col>
+                <ion-col>Hard Disk</ion-col>
+                <ion-col>OS</ion-col>
+            </ion-row>
+            <ion-row class="inputs">
+                <ion-col>
+                    <ion-input formControlName="processer" placeholder="Processer" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('processer')?.touched && masterForm.get('processer')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="mother_board" placeholder="Mother Board" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('mother_board')?.touched && masterForm.get('mother_board')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="cabinet" placeholder="Cabinet" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('cabinet')?.touched && masterForm.get('cabinet')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="hard_disk" placeholder="Hard Disk" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('hard_disk')?.touched && masterForm.get('hard_disk')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="os" placeholder="OS" fill="outline"></ion-input>
+                    <ion-note *ngIf="masterForm.get('os')?.touched && masterForm.get('os')?.invalid">invalid</ion-note>
+                </ion-col>
+            </ion-row>
+            <ion-row class="labels">
+                <ion-col>OS key</ion-col>
+                <ion-col>Printer</ion-col>
+                <ion-col>Scanner</ion-col>
+                <ion-col>IP Address</ion-col>
+                <ion-col>MAC ID</ion-col>
+            </ion-row>
+            <ion-row class="inputs">
+                <ion-col>
+                    <ion-input formControlName="os_key" placeholder="OS Key" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('os_key')?.touched && masterForm.get('os_key')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="printer" placeholder="Printer" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('printer')?.touched && masterForm.get('printer')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="scanner" placeholder="Scanner" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('scanner')?.touched && masterForm.get('scanner')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="ip_address" placeholder="IP Address" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('ip_address')?.touched && masterForm.get('ip_address')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="mac_id" placeholder="mac id" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('mac_id')?.touched && masterForm.get('mac_id')?.invalid">invalid</ion-note>
+                </ion-col>
+
+            </ion-row>
+            <ion-row class="labels">
+                <ion-col>System Name</ion-col>
+                <ion-col>Department</ion-col>
+                <ion-col>Serial No</ion-col>
+                <ion-col>Remarks</ion-col>
+                <ion-col>MS Office Key</ion-col>
+            </ion-row>
+            <ion-row class="inputs">
+                <ion-col>
+                    <ion-input formControlName="system_name" placeholder="System Name" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('system_name')?.touched && masterForm.get('system_name')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="department" placeholder="Department" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('department')?.touched && masterForm.get('department')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="serial_no" placeholder="Serial No" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('serial_no')?.touched && masterForm.get('serial_no')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="remarks" placeholder="Remarks" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('remarks')?.touched && masterForm.get('remarks')?.invalid">invalid</ion-note>
+                </ion-col>
+                <ion-col>
+                    <ion-input formControlName="ms_office_key" placeholder="MS Office Key" fill="outline"></ion-input>
+                    <ion-note
+                        *ngIf="masterForm.get('ms_office_key')?.touched && masterForm.get('ms_office_key')?.invalid">invalid</ion-note>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    Install Date :
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="2">
+                    <ion-input id="open_cal" [readonly]="true" fill="outline" [value]="formattedDate" placeholder="Date"
+                        formControlName="date"></ion-input>
+                    <ion-modal trigger="open_cal" [keepContentsMounted]="true" [initialBreakpoint]="0.65">
+                        <ng-template>
+                            <ion-datetime presentation="date" (ionChange)="datePick($event)"
+                                [showDefaultButtons]="true"></ion-datetime>
+                        </ng-template>
+                    </ion-modal>
+                    <ion-note
+                        *ngIf="masterForm.get('date')?.touched && masterForm.get('date')?.invalid">invalid</ion-note>
+                </ion-col>
+            </ion-row>
+            <ion-button class="btn" type="submit" [disabled]="masterForm.invalid">Add Master</ion-button>
+        </ion-grid>
+    </form>
+</ion-content>

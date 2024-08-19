@@ -1,0 +1,56 @@
+:host {
+    ion-content {
+      --background: #f7f7f7; // Light background color for the content area
+      
+      .header {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0;
+        color: black;
+      }
+  
+      form {
+        padding: 0 15px;
+  
+        ion-grid {
+          .labels {
+            ion-col {
+              font-weight: bold;
+              font-size: 1rem;
+              padding: 10px 0;
+              background-color: #d1eef0;
+              color: var(--ion-color-medium);
+            }
+          }
+  
+          .inputs {
+            ion-col {
+              ion-select,
+              ion-input {
+                width: 100%;
+                margin-bottom: 10px;
+              }
+  
+              ion-note {
+                // color: var(--ion-color-danger);
+                font-size: 0.8rem;
+              }
+            }
+          }
+  
+          ion-button.btn {
+            margin-top: 20px;
+            width: 100%;
+            --background: var(--ion-color-primary);
+            --border-radius: 4px;
+            --padding-start: 15px;
+            --padding-end: 15px;
+          }
+        }
+      }
+    }
+  }
+  
+  

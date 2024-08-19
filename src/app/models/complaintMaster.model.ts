@@ -1,0 +1,32 @@
+export interface ComplaintMasterModel {
+    id?: number; 
+    master_type: string;
+    unit: string;
+    location: string;
+    material_type: string;
+    IDNO: string;
+    user_name?: string;
+    monitor?: string; 
+    keyboard?: string; 
+    mouse?: string;
+    ram?: string;
+    processer?: string; 
+    mother_board?: string; 
+    cabinet?: string;  
+    hard_disk?: string;  
+    os?: string;  
+    os_key?: string;  
+    printer?: string;  
+    scanner?: string;  
+    ip_address?: string;  
+    mac_id?: string;  
+    system_name?: string;  
+    department?: string;  
+    serial_no?: string;  
+    remark?: string;  
+    ms_office_key?: string;  
+    install_date?: Date;  
+    value?: string;  
+    createdAt?: Date;  
+    updatedAt?: Date;  
+}

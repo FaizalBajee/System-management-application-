@@ -1,0 +1,82 @@
+ion-content {
+  --background: #a9acaf; 
+  padding: 20px;
+}
+.list {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Style for the form header
+.header {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+// Style for the ion-item elements
+ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  margin-bottom: 15px;
+  border-bottom: none;
+
+  &.header {
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+  }
+
+  // Style for the inputs
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+  }
+
+  // Style for the ion-select
+  ion-select {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --placeholder-color: #888;
+    --color: #333;
+
+    .select-text {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+  }
+}
+
+// Style for the notes (validation messages)
+ion-note {
+  color: #797776;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+// Style for the button
+ion-button {
+  --background: #3498db;
+  --border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+
+  &:disabled {
+    --background: #95a5a6;
+  }
+}

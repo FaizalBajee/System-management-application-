@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { ViewMessagePage } from './view-message.page';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { MasterPage } from './master.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ViewMessagePage
+    component: MasterPage,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -14,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ViewMessagePageRoutingModule {}
+export class MasterPageRoutingModule { }
