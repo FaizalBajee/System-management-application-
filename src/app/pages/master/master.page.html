@@ -158,7 +158,7 @@
                 <ion-col>System Name</ion-col>
                 <ion-col>Department</ion-col>
                 <ion-col>Serial No</ion-col>
-                <ion-col>Remarks</ion-col>
+                <ion-col>remark</ion-col>
                 <ion-col>MS Office Key</ion-col>
             </ion-row>
             <ion-row class="inputs">
@@ -178,9 +178,9 @@
                         *ngIf="masterForm.get('serial_no')?.touched && masterForm.get('serial_no')?.invalid">invalid</ion-note>
                 </ion-col>
                 <ion-col>
-                    <ion-input formControlName="remarks" placeholder="Remarks" fill="outline"></ion-input>
+                    <ion-input formControlName="remark" placeholder="remark" fill="outline"></ion-input>
                     <ion-note
-                        *ngIf="masterForm.get('remarks')?.touched && masterForm.get('remarks')?.invalid">invalid</ion-note>
+                        *ngIf="masterForm.get('remark')?.touched && masterForm.get('remark')?.invalid">invalid</ion-note>
                 </ion-col>
                 <ion-col>
                     <ion-input formControlName="ms_office_key" placeholder="MS Office Key" fill="outline"></ion-input>

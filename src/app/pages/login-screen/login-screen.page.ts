@@ -13,7 +13,7 @@ export class LoginScreenPage implements OnInit {
   loginForm!: FormGroup;
   role: roleModel[] = []
 
-  constructor(private fb: FormBuilder, private route: Router, private service: LoginService, private roleService: RoleService) {
+  constructor(private fb: FormBuilder, private route: Router, private loginService: LoginService, private roleService: RoleService) {
     this.loginForm = this.fb.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
@@ -27,13 +27,12 @@ export class LoginScreenPage implements OnInit {
   }
   signIn() {
     if (this.loginForm.valid) {
-      this.service.login(this.loginForm.value.user, this.loginForm.value.password).subscribe(Response => {
+      this.loginService.login(this.loginForm.value.user, this.loginForm.value.password).subscribe(Response => {
         if (!Response.success) return alert("invalid user")
         const userRole = this.loginForm.value.role;
         const userName = this.loginForm.value.name;
         const userPassword = this.loginForm.value.password;
         const accessToken = Response.content.accessToken;
-        localStorage.setItem("token", accessToken);
         this.route.navigate(['master']);
 
       })

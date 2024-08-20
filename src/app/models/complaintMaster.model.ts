@@ -7,7 +7,7 @@ export interface ComplaintMasterModel {
     IDNO: string;
     user_name?: string;
     monitor?: string; 
-    keyboard?: string; 
+    keyboad?: string; 
     mouse?: string;
     ram?: string;
     processer?: string; 

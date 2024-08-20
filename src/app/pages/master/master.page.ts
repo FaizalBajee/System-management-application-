@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
 import { ComplaintMasterService } from 'src/app/services/complaintMaster.service';
 import { ComplaintMasterModel } from 'src/app/models/complaintMaster.model';
 import { ComplaintMasterUploadService } from 'src/app/services/complaintMasterUpoad.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-master',
@@ -30,7 +31,7 @@ export class MasterPage implements OnInit {
   availableLocations: locationModel[] = [];
   materialType: materialTypeModel[] = [];
   availableMaterialType: materialTypeModel[] = [];
-  constructor(private fb: FormBuilder, private MTservice: MasterTypeService, private datePipe: DatePipe, private unitservice: UnitService, private locatonService: LocationService, private materialTypeService: MaterialTypeService, private complaintMasterService: ComplaintMasterService, private uploadService: ComplaintMasterUploadService) {
+  constructor(private fb: FormBuilder, private MTservice: MasterTypeService, private datePipe: DatePipe, private unitservice: UnitService, private locatonService: LocationService, private materialTypeService: MaterialTypeService, private complaintMasterService: ComplaintMasterService, private uploadService: ComplaintMasterUploadService, private loginService: LoginService) {
     this.masterForm = this.fb.group({
       master_type: ['', Validators.required],
       unit: ['', Validators.required],
@@ -55,7 +56,7 @@ export class MasterPage implements OnInit {
       system_name: ['', [Validators.maxLength(50)]],
       department: ['', [Validators.maxLength(50)]],
       serial_no: ['', [Validators.maxLength(50)]],
-      remarks: ['', [Validators.maxLength(50)]],
+      remark: ['', [Validators.maxLength(50)]],
       ms_office_key: ['', [Validators.maxLength(50)]],
       date: ['', Validators.required]
     })
@@ -156,9 +157,9 @@ export class MasterPage implements OnInit {
       location: this.masterForm.get('location')?.value,
       material_type: this.masterForm.get('material_type')?.value,
       IDNO: this.masterForm.get('id_no')?.value,
-      user_name: this.masterForm.get('user_name')?.value,
+      user_name: this.masterForm.get('user')?.value,
       monitor: this.masterForm.get('monitor')?.value,
-      keyboard: this.masterForm.get('keyboard')?.value,
+      keyboad: this.masterForm.get('keyboard')?.value,
       mouse: this.masterForm.get('mouse')?.value,
       ram: this.masterForm.get('ram')?.value,
       processer: this.masterForm.get('processer')?.value,
@@ -189,8 +190,7 @@ export class MasterPage implements OnInit {
     })
   }
   logout() {
-    localStorage.removeItem('token')
-    alert("logout")
+    // this.loginService.logout()
   }
 
 }
