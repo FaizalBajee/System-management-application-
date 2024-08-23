@@ -13,6 +13,10 @@ import { ComplaintMasterService } from 'src/app/services/complaintMaster.service
 import { ComplaintMasterModel } from 'src/app/models/complaintMaster.model';
 import { ComplaintMasterUploadService } from 'src/app/services/complaintMasterUpoad.service';
 import { LoginService } from 'src/app/services/login.service';
+import { GetComplaintInfoService } from 'src/app/services/getComplaintInfo.service';
+import { Router } from '@angular/router';
+import { computerMasterModel } from 'src/app/models/computerMaster.model';
+import { GetMonitorService } from 'src/app/services/getMonitor.service';
 
 @Component({
   selector: 'app-master',
@@ -23,15 +27,17 @@ import { LoginService } from 'src/app/services/login.service';
 export class MasterPage implements OnInit {
   masterForm!: FormGroup;
   formattedDate = '';
+  monitor: computerMasterModel[] = [];
   getItemId?: number;
   complaintMaster: ComplaintMasterModel[] = [];
+  getComplaintInfo: ComplaintMasterModel[] = [];
   masterType: masterType[] = [];
   unit: unitModel[] = [];//TATA AND TVS --
   location: locationModel[] = [];
   availableLocations: locationModel[] = [];
   materialType: materialTypeModel[] = [];
   availableMaterialType: materialTypeModel[] = [];
-  constructor(private fb: FormBuilder, private MTservice: MasterTypeService, private datePipe: DatePipe, private unitservice: UnitService, private locatonService: LocationService, private materialTypeService: MaterialTypeService, private complaintMasterService: ComplaintMasterService, private uploadService: ComplaintMasterUploadService, private loginService: LoginService) {
+  constructor(private route: Router, private fb: FormBuilder, private getMonitorService: GetMonitorService, private MTservice: MasterTypeService, private getComplaintInfoService: GetComplaintInfoService, private datePipe: DatePipe, private unitservice: UnitService, private locatonService: LocationService, private materialTypeService: MaterialTypeService, private complaintMasterService: ComplaintMasterService, private uploadService: ComplaintMasterUploadService, private loginService: LoginService) {
     this.masterForm = this.fb.group({
       master_type: ['', Validators.required],
       unit: ['', Validators.required],
@@ -62,21 +68,27 @@ export class MasterPage implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.getComplaintMaster()
-    this.getMasterType()
-    this.getUnit()
-    this.getLocation()
-    this.getMaterialType()
+    this.getMonitor();
+    this.getItemIdFun();
+    this.getMasterType();
+    this.getUnit();
+    this.getLocation();
+    this.getMaterialType();
   }
-  getComplaintMaster() {
+  getItemIdFun() {
     this.complaintMasterService.complaintMasterService().subscribe(Response => {
       this.complaintMaster = Response.content.showComplaintMaster
       if (this.complaintMaster && this.complaintMaster.length > 0) {
-        const lastComplaint = this.complaintMaster[this.complaintMaster.length - 1];
+        let lastComplaint = this.complaintMaster[this.complaintMaster.length - 1];
         this.getItemId = lastComplaint.id;
       } else {
         this.getItemId = 0;
       }
+    })
+  }
+  getMonitor() {
+    this.getMonitorService.getMonitorService().subscribe(Response => {
+      this.monitor = Response.content.showComputerMaster
     })
   }
   getMasterType() {
@@ -107,41 +119,36 @@ export class MasterPage implements OnInit {
   }
 
   onUnitChange(event: any) {
-    const selectedUnit = event.detail.value;
-    const unit = selectedUnit.unit;
-    const selectedUnitId = selectedUnit.id;
+    const selectedUnitId = event.detail.value.id;
     const selectedUnitData = this.location.filter(loc => loc.unitId === selectedUnitId);
     this.availableLocations = selectedUnitData || [];
     this.masterForm.get('location')?.setValue('');
-
   }
   onMasterChange(event: any) {
-    const selectedMaster = event.detail.value;
-    const selectedMasterId = selectedMaster.id;
+    const selectedMasterId = event.detail.value.id;
     const selectedMasterData = this.materialType.filter(master => master.masterId === selectedMasterId);
     this.availableMaterialType = selectedMasterData || [];
     this.masterForm.get('material_type')?.setValue('');
 
   }
   onMaterialChange(event: any) {
-    const masterCode = this.masterForm.value.master_type.masterCode;
-    console.log("masterCode: ", masterCode)
-    const masterTypeCode = masterCode;
+    const masterCode = this.masterForm.value.master_type.master_code;
+    console.log("masterCode: ", masterCode);
     if (this.getItemId === undefined) {
       this.getItemId = 0;
     }
     ++this.getItemId;
-    const newId = `${masterTypeCode}${this.getItemId.toString().padStart(4, '0')}`;
+    const newId = `${masterCode}${this.getItemId.toString().padStart(4, '0')}`;
     this.masterForm.get('id_no')?.setValue(newId);
-    console.log(typeof (this.masterForm.get('id_no')?.value))
+    // console.log(typeof (this.masterForm.get('id_no')?.value));
   }
   addMaster() {
     if (this.masterForm.valid) {
-      const master = this.masterForm.value.master_type.master;
+      const selectedMaster = this.masterForm.get('master_type')?.value;
+      const selectedUnit = this.masterForm.get('unit')?.value;
+      this.masterForm.get('master_type')?.setValue(selectedMaster.master_type);
+      this.masterForm.get('unit')?.setValue(selectedUnit.unit)
       // const masterCode = this.masterForm.value.master_type.masterCode;
-      const unit = this.masterForm.value.unit.unit;
-      this.masterForm.get('master_type')?.setValue(master);
-      this.masterForm.get('unit')?.setValue(unit);
       // const masterTypeCode = masterCode;
       // ++this.getItemId;
       // const newId = `${masterTypeCode}${this.getItemId.toString().padStart(4, '0')}`;
@@ -184,13 +191,15 @@ export class MasterPage implements OnInit {
         alert(Response.message);
         return;
       }
+      alert('updated successfully!');
       window.location.reload();
-      alert('updated successfully!')
-
     })
   }
   logout() {
     // this.loginService.logout()
+  }
+  goToReport() {
+    this.route.navigate(['report'])
   }
 
 }

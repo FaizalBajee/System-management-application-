@@ -15,6 +15,18 @@ const routes: Routes = [
     path: 'login-screen',
     loadChildren: () => import('./pages/login-screen/login-screen.module').then( m => m.LoginScreenPageModule)
   },
+  {
+    path: 'report',
+    loadChildren: () => import('./pages/report/report.module').then( m => m.ReportPageModule)
+  },
+  {
+    path: 'main-page',
+    loadChildren: () => import('./pages/main-page/main-page.module').then( m => m.MainPagePageModule)
+  },
+  {
+    path: 'master-type',
+    loadChildren: () => import('./pages/master-type/master-type.module').then( m => m.MasterTypePageModule)
+  },
   
 ];
 

@@ -1,0 +1,106 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Master Type</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-label class="heading">Computer Master Material</ion-label>
+  <ion-grid class="grids">
+    <ion-row class="labels">
+      <ion-col>Mater Type</ion-col>
+      <ion-col>Master Code</ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row class="inputs">
+      <ion-col>
+        <ion-input fill="outline" placeholder="Master type" [(ngModel)]="masterTypeName"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input placeholder="code" fill="outline" [(ngModel)]="masterTypeCode"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button class="btn" (click)="handleMasterTypeAdd()">Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-label class="heading">Material Type</ion-label>
+  <ion-grid class="grids">
+    <ion-row class="labels">
+      <ion-col>Type</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row class="inputs">
+      <ion-col>
+        <ion-select fill="outline" interface="popover" placeholder="Master Type" (ionChange)="onMasterChangeA($event)">
+          <ion-select-option *ngFor="let data of masterType" [value]="data">
+            {{data.master_type}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-input placeholder="Name" fill="outline" [(ngModel)]="materialName"></ion-input>
+      </ion-col>
+
+      <ion-col>
+        <ion-button class="btn" (click)="handleMaterialAdd()">Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-label class="heading">Complaint Type</ion-label>
+  <ion-grid class="grids">
+    <ion-row class="labels">
+      <ion-col>Type</ion-col>
+      <ion-col>Material</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row class="inputs">
+      <ion-col>
+        <ion-select fill="outline" placeholder="type" interface="popover" (ionChange)="onMasterChangeB($event)">
+          <ion-select-option *ngFor="let data of masterType" [value]="data">
+            {{data.master_type}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-select fill="outline" (ionChange)="onMaterialChangeB($event)" interface="popover"
+          placeholder="Matirial Type">
+          <ion-select-option *ngFor="let data of availableMaterialType"
+            [value]="data">{{data.material_type}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-input fill="outline" placeholder="Name" [(ngModel)]="computerMasterName"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button class="btn" (click)="handleComputerMasterAdd()">Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-label class="heading">Computer Master Material</ion-label>
+  <ion-grid class="grids">
+    <ion-row class="labels">
+      <ion-col>Type</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row class="inputs">
+      <ion-col>
+        <ion-select fill="outline" interface="popover" placeholder="Type" (ionChange)="onComputerMasterChangeC($event)">
+          <ion-select-option *ngFor="let data of computerMasterInfo" [value]="data">
+            {{data.item_type}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-input fill="outline" placeholder="Name" [(ngModel)]="computerTypeName"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button class="btn" (click)="handleComputerTypeAdd()">Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

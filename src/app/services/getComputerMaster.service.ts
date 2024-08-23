@@ -7,11 +7,11 @@ import { LoginService } from "./login.service";
 @Injectable({
     providedIn: 'root'
 })
-export class ComplaintMasterService {
+export class GetComputerMasterService {
     constructor(private http: HttpClient, private loginService: LoginService) { }
-    complaintMasterService(): Observable<serverResponse> {
+    getComputerMasterService(): Observable<serverResponse> {
         const token = this.loginService.getToken();
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-        return this.http.get<serverResponse>(environment.BaseURL + "/getItemId", { headers })
+        return this.http.get<serverResponse>(environment.BaseURL + "/getComputerMaster", { headers })
     }
 }

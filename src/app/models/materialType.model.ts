@@ -1,5 +1,5 @@
 export interface materialTypeModel {
-    id: number,
+    id?: number,
     material_type: string,
-    masterId: string
+    masterId: number
 }

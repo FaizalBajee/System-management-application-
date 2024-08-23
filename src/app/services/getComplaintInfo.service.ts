@@ -7,11 +7,11 @@ import { LoginService } from "./login.service";
 @Injectable({
     providedIn: 'root'
 })
-export class ComplaintMasterService {
+export class GetComplaintInfoService {
     constructor(private http: HttpClient, private loginService: LoginService) { }
-    complaintMasterService(): Observable<serverResponse> {
+    getComplaintInfo(masterType: string, unit: string, location: string): Observable<serverResponse> {
         const token = this.loginService.getToken();
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-        return this.http.get<serverResponse>(environment.BaseURL + "/getItemId", { headers })
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        return this.http.get<serverResponse>(environment.BaseURL + `/getComplaintInfo?masterType=${masterType}&unit=${unit}&location=${location}`, { headers })
     }
 }

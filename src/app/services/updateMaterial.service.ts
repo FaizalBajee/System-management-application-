@@ -3,15 +3,16 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { serverResponse } from "../models/server.response.Model";
 import { environment } from "src/environments/environment";
+import { materialTypeModel } from "../models/materialType.model";
 import { LoginService } from "./login.service";
 @Injectable({
     providedIn: 'root'
 })
-export class ComplaintMasterService {
+export class UpdateMaterialService {
     constructor(private http: HttpClient, private loginService: LoginService) { }
-    complaintMasterService(): Observable<serverResponse> {
+    updateMaterialService(payload: materialTypeModel): Observable<serverResponse> {
         const token = this.loginService.getToken();
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-        return this.http.get<serverResponse>(environment.BaseURL + "/getItemId", { headers })
+        return this.http.post<serverResponse>(environment.BaseURL + "/updateMaterial", payload, {headers})
     }
 }

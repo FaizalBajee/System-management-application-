@@ -1,56 +1,76 @@
 :host {
-    ion-content {
-      --background: #f7f7f7; // Light background color for the content area
-      
-      .header {
-        display: block;
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-        margin: 20px 0;
-        color: black;
-      }
-  
-      form {
-        padding: 0 15px;
-  
-        ion-grid {
-          .labels {
-            ion-col {
-              font-weight: bold;
-              font-size: 1rem;
-              padding: 10px 0;
-              background-color: #d1eef0;
-              color: var(--ion-color-medium);
-            }
-          }
-  
-          .inputs {
-            ion-col {
-              ion-select,
-              ion-input {
-                width: 100%;
-                margin-bottom: 10px;
-              }
-  
-              ion-note {
-                // color: var(--ion-color-danger);
-                font-size: 0.8rem;
-              }
-            }
-          }
-  
-          ion-button.btn {
-            margin-top: 20px;
-            width: 100%;
-            --background: var(--ion-color-primary);
-            --border-radius: 4px;
-            --padding-start: 15px;
-            --padding-end: 15px;
+  ion-content {
+    --background: url('../../../assets/images/webBackground.png') no-repeat center center / cover;
+
+    .header {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+      color: black;
+    }
+
+    form {
+      padding: 0 15px;
+
+      ion-grid {
+        .labels {
+          ion-col {
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 10px 0;
+            background-color: #a3d3d6;
+            color: var(--ion-color-medium);
           }
         }
+
+        .inputs {
+          ion-col {
+
+            ion-select,
+            ion-input {
+              width: 100%;
+              margin-bottom: 10px;
+            }
+
+            ion-note {
+              // color: var(--ion-color-danger);
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        .btn {
+          width: 100%;
+          --background: #007bff;
+          --border-radius: 4px;
+          --padding-start: 16px;
+          --padding-end: 16px;
+          --height: 40px;
+          margin-top: 16px;
+
+          &:disabled {
+            --background: #ccc;
+          }
+        }
+
+        .reportBTN {
+          width: 100%;
+          --background: #a0b8c9;
+          --border-radius: 4px;
+          --padding-start: 16px;
+          --padding-end: 16px;
+          --height: 40px;
+          margin-top: 16px;
+          margin-bottom: 16px;
+
+          &:hover {
+            --background: #96a3b6;
+          }
+        }
+
       }
     }
   }
-  
-  
+}

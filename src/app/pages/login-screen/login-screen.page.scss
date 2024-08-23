@@ -1,5 +1,5 @@
 ion-content {
-  --background: #a9acaf; 
+  --background: url('../../../assets/images/bg.jpg') no-repeat center center / cover;
   padding: 20px;
 }
 .list {
@@ -10,8 +10,6 @@ ion-content {
   background: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-// Style for the form header
 .header {
   font-size: 1.3rem;
   font-weight: bold;
@@ -19,8 +17,6 @@ ion-content {
   margin-bottom: 20px;
   color: #333;
 }
-
-// Style for the ion-item elements
 ion-item {
   --padding-start: 0;
   --padding-end: 0;
@@ -31,8 +27,6 @@ ion-item {
     --inner-padding-start: 0;
     --inner-padding-end: 0;
   }
-
-  // Style for the inputs
   ion-input {
     --padding-start: 10px;
     --padding-end: 10px;
@@ -44,14 +38,11 @@ ion-item {
       font-size: 1rem;
     }
   }
-
-  // Style for the ion-select
   ion-select {
     --padding-start: 10px;
     --padding-end: 10px;
     --placeholder-color: #888;
     --color: #333;
-
     .select-text {
       padding: 10px;
       border-radius: 5px;
@@ -60,22 +51,17 @@ ion-item {
     }
   }
 }
-
-// Style for the notes (validation messages)
 ion-note {
   color: #797776;
   font-size: 0.9rem;
   margin-top: -10px;
   margin-bottom: 10px;
 }
-
-// Style for the button
 ion-button {
   --background: #3498db;
   --border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
-
   &:disabled {
     --background: #95a5a6;
   }

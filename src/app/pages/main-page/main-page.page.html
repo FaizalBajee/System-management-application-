@@ -1,0 +1,21 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+ <ion-title>mainPage</ion-title> 
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-label class="head">Main Page</ion-label>
+  <ion-grid class="grid">
+    <ion-row class="item">
+      <ion-col (click)="handleMasterType()" class="list">
+        <ion-icon name="create"></ion-icon>
+        <ion-col>Master Type</ion-col>
+      </ion-col>
+      <ion-col (click)="handleAddItem()" class="list">
+        <ion-icon name="bag-add"></ion-icon>
+        <ion-col>Item Master</ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -10,6 +10,7 @@ export interface serverResponse {
         showMaster: [];
         showMaterial: [];
         showComplaintMaster: [];
+        showComputerMaster: [];
         user_name: string;
         password: string;
         accessToken: string;

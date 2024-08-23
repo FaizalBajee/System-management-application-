@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Complaint Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="reportForm" (ngSubmit)="showReport()">
+    <ion-grid>
+      <ion-row class="labels">
+        <ion-col class="labelHeader">Master Type</ion-col>
+        <ion-col class="labelHeader">Unit</ion-col>
+        <ion-col class="labelHeader">Location</ion-col>
+        <ion-col class="labelHeader">Material Type</ion-col>
+        <ion-col class="labelHeader"></ion-col>
+      </ion-row>
+      <ion-row class="inputs">
+        <ion-col>
+          <ion-select fill="outline" formControlName="master_type" interface="popover"
+            (ionChange)="onMasterChange($event)" placeholder="master type">
+            <ion-select-option *ngFor="let data of masterType" [value]="data">{{data.master_type}}</ion-select-option>
+          </ion-select>
+          <ion-note *ngIf="reportForm.get('master_type')?.touched && reportForm.get('master_type')?.invalid">please
+            fill this item</ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-select fill="outline" formControlName="unit" (ionChange)="onUnitChange($event)" interface="popover"
+            placeholder="Unit">
+            <ion-select-option *ngFor="let data of unit" [value]="data">
+              {{data.unit}}
+            </ion-select-option>
+          </ion-select>
+          <ion-note *ngIf="reportForm.get('unit')?.touched && reportForm.get('unit')?.invalid">please
+            fill this item</ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-select fill="outline" formControlName="location" interface="popover" placeholder="Location">
+            <ion-select-option *ngFor="let data of availableLocations" [value]="data.location">{{
+              data.location }}</ion-select-option>
+          </ion-select>
+          <ion-note *ngIf="reportForm.get('location')?.touched && reportForm.get('location')?.invalid">please
+            fill this item</ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-select fill="outline" (ionChange)="onMaterialChange($event)" formControlName="material_type"
+            interface="popover" placeholder="Matirial Type">
+            <ion-select-option *ngFor="let data of availableMaterialType"
+              [value]="data.material_type">{{data.material_type}}</ion-select-option>
+          </ion-select>
+          <ion-note *ngIf="reportForm.get('material_type')?.touched && reportForm.get('material_type')?.invalid">please
+            fill this item</ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-button class="btn" type="submit" [disabled]="reportForm.invalid">Show</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-grid class="listBody">
+    <ion-row class="list">
+      <ion-col>Unit</ion-col>
+      <ion-col>Location</ion-col>
+      <ion-col>material</ion-col>
+      <ion-col>IDNO</ion-col>
+      <ion-col>Install date</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let data of complaintInfo" class="listItem">
+      <ion-col>{{data.unit}}</ion-col>
+      <ion-col>{{data.location}}</ion-col>
+      <ion-col>{{data.material_type}}</ion-col>
+      <ion-col>{{data.IDNO}}</ion-col>
+      <ion-col>{{data.install_date}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

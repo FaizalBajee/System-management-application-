@@ -1,3 +1,10 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+        <ion-title>Master</ion-title>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
     <ion-label class="header" (click)="logout()">Master</ion-label>
     <form [formGroup]="masterForm" (ngSubmit)="addMaster()">
@@ -14,7 +21,7 @@
                     <ion-select fill="outline" formControlName="master_type" interface="popover"
                         (ionChange)="onMasterChange($event)" placeholder="master type">
                         <ion-select-option *ngFor="let data of masterType"
-                            [value]="{ id:data.id , master:data.master_type , masterCode:data.master_code }">{{data.master_type}}</ion-select-option>
+                            [value]="data">{{data.master_type}}</ion-select-option>
                     </ion-select>
                     <ion-note
                         *ngIf="masterForm.get('master_type')?.touched && masterForm.get('master_type')?.invalid">please
@@ -23,7 +30,7 @@
                 <ion-col>
                     <ion-select fill="outline" formControlName="unit" (ionChange)="onUnitChange($event)"
                         interface="popover" placeholder="Unit">
-                        <ion-select-option *ngFor="let data of unit" [value]="{ unit: data.unit,id: data.id }">
+                        <ion-select-option *ngFor="let data of unit" [value]="data">
                             {{data.unit}}
                         </ion-select-option>
                     </ion-select>
@@ -66,7 +73,12 @@
                         *ngIf="masterForm.get('user')?.touched && masterForm.get('user')?.invalid">invalid</ion-note>
                 </ion-col>
                 <ion-col>
-                    <ion-input formControlName="monitor" placeholder="monitor" fill="outline"></ion-input>
+                    <ion-select formControlName="monitor" fill="outline" interface="popover" placeholder="Monitor">
+                        <ion-select-option *ngFor="let data of monitor" [value]="data.item_type">
+                            {{data.item_type}}
+                        </ion-select-option>
+                    </ion-select>
+                    <!-- <ion-input formControlName="monitor" placeholder="monitor" fill="outline"></ion-input> -->
                     <ion-note
                         *ngIf="masterForm.get('monitor')?.touched && masterForm.get('monitor')?.invalid">invalid</ion-note>
                 </ion-col>
@@ -208,6 +220,7 @@
                 </ion-col>
             </ion-row>
             <ion-button class="btn" type="submit" [disabled]="masterForm.invalid">Add Master</ion-button>
+            <ion-button class="reportBTN" (click)="goToReport()">Report</ion-button>
         </ion-grid>
     </form>
 </ion-content>

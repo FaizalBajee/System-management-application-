@@ -33,7 +33,7 @@ export class LoginScreenPage implements OnInit {
         const userName = this.loginForm.value.name;
         const userPassword = this.loginForm.value.password;
         const accessToken = Response.content.accessToken;
-        this.route.navigate(['master']);
+        this.route.navigate(['main-page']);
 
       })
     }
