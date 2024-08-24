@@ -11,6 +11,7 @@ export interface serverResponse {
         showMaterial: [];
         showComplaintMaster: [];
         showComputerMaster: [];
+        showComputerType: [];
         user_name: string;
         password: string;
         accessToken: string;

@@ -1,61 +1,101 @@
-ion-content {
-    --padding-top: 16px;
-    --padding-bottom: 16px;
-    --background: url('../../../assets/images/webBackground.png') no-repeat center center / cover;
-  
-    .heading {
-      display: block;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #343a40;
-      margin: 16px 0 8px;
-      padding: 0 16px;
-    }
-  
-    .grids {
-      // background: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      margin-bottom: 16px;
-      padding: 16px;
-  
-      ion-row {
-        align-items: center;
-  
-        &.labels {
-          font-weight: 600;
-          color: #495057;
-        }
-  
-        &.inputs {
-          ion-input,
-          ion-select {
-            --padding-start: 8px;
-            --padding-end: 8px;
-            --border-radius: 8px;
-            --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-          }
-        }
-  
-        ion-col {
-          text-align: start;
-          padding: 8px;
-        }
-      }
-    }
-  
-    .btn {
-      --background: #007bff;
-      --border-radius: 8px;
-      --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      --padding-start: 16px;
-      --padding-end: 16px;
-      font-weight: 600;
-      font-size: 0.9rem;
-  
-      &:hover {
-        --background: #0056b3;
-      }
-    }
+ion-content{
+  --background:rgb(172, 176, 179);
+}
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.label {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn {
+  width: 90px;
+  height: 50px;
+  --border-radius: 6px;
+  --border-width: 2px;
+  --border-color: #007bff;
+  --background: linear-gradient(135deg, #007bff, #00aaff);
+  --color: #fff;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+  --transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  --box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+
+  &:hover {
+    --background: linear-gradient(135deg, #006aff, #009aff);
+    transform: translateY(-2px);
+    --box-shadow: 0 6px 10px rgba(0, 123, 255, 0.4);
   }
-  
+
+  &:active {
+    transform: translateY(0);
+    --box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
+  }
+}
+
+
+.content {
+  padding-top: 8px;
+}
+
+.table {
+  width: 100%;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #d1dcdd;
+  border-bottom: 2px solid #ddd;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.table-row {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-cell-header{
+  color:black;
+  font-weight: bold;
+  size: 20px;
+}
+.table-cell {
+  padding: 12px 8px;
+  font-size: 1em;
+  color: #555;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+
+.insert-form {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+}

@@ -4,6 +4,7 @@ import { computerTypeModel } from 'src/app/models/computerType.model';
 import { masterType } from 'src/app/models/masterType.model';
 import { materialTypeModel } from 'src/app/models/materialType.model';
 import { GetComputerMasterService } from 'src/app/services/getComputerMaster.service';
+import { GetComputerTypeService } from 'src/app/services/getComputerType.service';
 import { MasterTypeService } from 'src/app/services/masterType.service';
 import { MaterialTypeService } from 'src/app/services/materialType.service';
 import { UpdateComputerMasterService } from 'src/app/services/updateComputerMaster.service';
@@ -20,20 +21,37 @@ export class MasterTypePage implements OnInit {
   materialType: materialTypeModel[] = [];
   availableMaterialType: materialTypeModel[] = [];
   computerMasterInfo: computerMasterModel[] = [];
+  computerTypeInfo: computerTypeModel[] = [];
   masterId !: number;
   materialId!: number;
   computerMasterId!: number;
   materialName!: string;
-  computerMasterName!: string;
+  MaterialDivisionName!: string;
   computerTypeName!: string;
   masterTypeName!: string;
   masterTypeCode!: string;
-  constructor(private masterTypeService: MasterTypeService, private updateMasterTypeService: UpdateMasterTypeService, private updateComputerTypeService: UpdateComputerTypeService, private getComputerMasterService: GetComputerMasterService, private updateComputerMasterService: UpdateComputerMasterService, private materialTypeService: MaterialTypeService, private updateMaterialService: UpdateMaterialService) { }
-
+  isMasterTypeFormVisible = false;
+  isMaterialTypeFormVisible = false;
+  isMaterialDivisionFormVisible = false;
+  isComputerMasterMaterialFormVisible = false;
+  constructor(private masterTypeService: MasterTypeService, private getComputerTypeService: GetComputerTypeService, private updateMasterTypeService: UpdateMasterTypeService, private updateComputerTypeService: UpdateComputerTypeService, private getComputerMasterService: GetComputerMasterService, private updateComputerMasterService: UpdateComputerMasterService, private materialTypeService: MaterialTypeService, private updateMaterialService: UpdateMaterialService) { }
+  toggleMasterTypeForm() {
+    this.isMasterTypeFormVisible = !this.isMasterTypeFormVisible;
+  }
+  toggleMaterialTypeForm() {
+    this.isMaterialTypeFormVisible = !this.isMaterialTypeFormVisible
+  }
+  toggleMaterialDivisionForm() {
+    this.isMaterialDivisionFormVisible = !this.isMaterialDivisionFormVisible
+  }
+  toggleComputerMasterMaterialForm() {
+    this.isComputerMasterMaterialFormVisible = !this.isComputerMasterMaterialFormVisible
+  }
   ngOnInit() {
     this.getMasterType();
     this.getMaterialType();
     this.getComputerMaster();
+    this.getComputerType();
   }
   getMasterType() {
     this.masterTypeService.MasterTypeService().subscribe(Response => {
@@ -51,7 +69,13 @@ export class MasterTypePage implements OnInit {
         this.computerMasterInfo = Response.content.showComputerMaster
       }
     })
-
+  }
+  getComputerType() {
+    this.getComputerTypeService.getComputerTypeService().subscribe(Response => {
+      if (Response.success) {
+        this.computerTypeInfo = Response.content.showComputerType
+      }
+    })
   }
   onMasterChangeA(event: any) {
     this.masterId = event.detail.value.id
@@ -83,9 +107,9 @@ export class MasterTypePage implements OnInit {
     })
 
   }
-  handleComputerMasterAdd() {
+  handleMaterialDivisionAdd(event: any) {
     const payload: computerMasterModel = {
-      item_type: this.computerMasterName,
+      item_type: this.MaterialDivisionName,
       material_id: this.materialId
     }
     this.updateComputerMasterService.updateComputerMasterService(payload).subscribe(Response => {
@@ -93,7 +117,7 @@ export class MasterTypePage implements OnInit {
         alert('something went wrong');
       }
       alert(Response.message);
-      this.computerMasterName = ''
+      this.MaterialDivisionName = ''
       window.location.reload();
     })
 
@@ -117,12 +141,18 @@ export class MasterTypePage implements OnInit {
       master_code: this.masterTypeCode,
     }
     this.updateMasterTypeService.updateMasterTypeService(payload).subscribe(Response => {
-      if (Response.success) {
-        alert(Response.message)
-        window.location.reload();
+      if (!Response.success) {
+        alert('something went wrong');
       }
+      alert(Response.message);
+      this.materialName = ''
+      window.location.reload();
     })
-
+  }
+  //
+  submitForm() {
+    alert(this.masterTypeName + " " + this.masterTypeCode)
+    this.toggleMasterTypeForm()
   }
 
 }
