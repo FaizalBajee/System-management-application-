@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main-page"></ion-back-button>
+    </ion-buttons>
     <ion-title>Master Type</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -8,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <ion-card class="card">
     <ion-card-header class="cardHeader">
-      <ion-label class="label" size="6">Computer Master Type</ion-label>
+      <ion-label class="label" size="6"> Master Type</ion-label>
       <ion-button class="btn" (click)="toggleMasterTypeForm()">Add</ion-button>
     </ion-card-header>
     <ion-card-content class="content">
@@ -34,10 +36,10 @@
       <form class="insert-form" *ngIf="isMasterTypeFormVisible">
         <ion-label class="label" size="6">Add Master Type</ion-label>
         <ion-item>
-          <ion-input placeholder="Master Type" [(ngModel)]="masterTypeName" name="masterType"></ion-input>
+          <ion-input placeholder="Master Type"  style="text-transform: uppercase;" [(ngModel)]="masterTypeName" name="masterType"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input placeholder="Master Code" [(ngModel)]="masterTypeCode" name="masterCode"></ion-input>
+          <ion-input placeholder="Master Code"  style="text-transform: uppercase;" [(ngModel)]="masterTypeCode" name="masterCode"></ion-input>
         </ion-item>
         <ion-button class="sbtn" expand="full" (click)="handleMasterTypeAdd()">Submit</ion-button>
       </form>
@@ -66,7 +68,7 @@
   </ion-grid> -->
   <ion-card class="card">
     <ion-card-header class="cardHeader">
-      <ion-label class="label" size="6">Computer Material Type</ion-label>
+      <ion-label class="label" size="6"> Material Type</ion-label>
       <ion-button class="btn" (click)="toggleMaterialTypeForm()">Add</ion-button>
     </ion-card-header>
     <ion-card-content class="content">
@@ -99,7 +101,7 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-input placeholder="Name" name="materialName" [(ngModel)]="materialName"></ion-input>
+          <ion-input placeholder="Name"  style="text-transform: uppercase;" name="materialName" [(ngModel)]="materialName"></ion-input>
         </ion-item>
         <ion-button class="sbtn" expand="full" (click)="handleMaterialAdd()">Submit</ion-button>
       </form>
@@ -173,7 +175,7 @@
           </ion-select>
         </ion-col>
         <ion-col>
-          <ion-input fill="outline" name="MaterialDivisionName" placeholder="Enter Material Division Name"
+          <ion-input fill="outline"  style="text-transform: uppercase;" name="MaterialDivisionName" placeholder="Enter Material Division Name"
             [(ngModel)]="MaterialDivisionName"></ion-input>
         </ion-col>
         <ion-col>
@@ -241,14 +243,16 @@
       <form class="insert-form" *ngIf="isComputerMasterMaterialFormVisible">
         <ion-label class="label" size="6">Add Computer Master Material</ion-label>
         <ion-col>
-          <ion-select fill="outline" name="computerMasterInfo" interface="popover" placeholder="Type" (ionChange)="onComputerMasterChangeC($event)">
+          <ion-select fill="outline" name="computerMasterInfo" interface="popover" placeholder="Type"
+            (ionChange)="onComputerMasterChangeC($event)">
             <ion-select-option *ngFor="let data of computerMasterInfo" [value]="data">
               {{data.item_type}}
             </ion-select-option>
           </ion-select>
         </ion-col>
         <ion-col>
-          <ion-input fill="outline" name="computerTypeName" placeholder="Name" [(ngModel)]="computerTypeName"></ion-input>
+          <ion-input fill="outline"  style="text-transform: uppercase;" name="computerTypeName" placeholder="Name"
+            [(ngModel)]="computerTypeName"></ion-input>
         </ion-col>
         <ion-col>
           <ion-button class="sbtn" expand="full" (click)="handleComputerTypeAdd()">Submit</ion-button>

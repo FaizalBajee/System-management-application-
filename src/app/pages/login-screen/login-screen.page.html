@@ -5,13 +5,13 @@
         Derik Group Complaint Management
       </ion-item>
       <ion-item>
-        <ion-input formControlName="user" label="USER NAME" label-placement="floating" fill="outline"
+        <ion-input style="text-transform: uppercase;" formControlName="user" label="USER NAME" label-placement="floating" fill="outline"
           placeholder="Enter User Name"></ion-input>
       </ion-item>
       <ion-note *ngIf="loginForm.get('user')?.touched && loginForm.get('user')?.invalid">user
         name require</ion-note>
       <ion-item>
-        <ion-input formControlName="password" require label="PASSWORD" label-placement="floating" fill="outline"
+        <ion-input style="text-transform: uppercase;" formControlName="password" require label="PASSWORD" label-placement="floating" fill="outline"
           placeholder="Enter password"></ion-input>
       </ion-item>
       <ion-note *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">password

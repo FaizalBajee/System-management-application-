@@ -28,8 +28,8 @@ export class ReportPage implements OnInit {
   constructor(private fb: FormBuilder, private getinfo: GetComplaintInfoService, private MTservice: MasterTypeService, private materialTypeService: MaterialTypeService, private unitService: UnitService, private locationService: LocationService) {
     this.reportForm = this.fb.group({
       master_type: ['', Validators.required],
-      unit: ['', Validators.required],
-      location: ['', Validators.required],
+      unit: [''],
+      location: [''],
       material_type: [''],
     })
   }
@@ -78,13 +78,13 @@ export class ReportPage implements OnInit {
   }
   showReport() {
     if (this.reportForm.valid) {
-      const master = this.reportForm.get('master_type')?.value.master_type
-      const unit = this.reportForm.get('unit')?.value.unit
-      const location = this.reportForm.get('location')?.value
+      const master = this.reportForm.get('master_type')?.value.master_type;
+      const unit = this.reportForm.get('unit')?.value.unit;
+      const location = this.reportForm.get('location')?.value;
       this.getinfo.getComplaintInfo(master, unit, location).subscribe(Response => {
         try {
           this.complaintInfo = Response.content.showComplaintMaster
-          console.log(this.complaintInfo)
+          console.log(typeof(this.complaintInfo))
         } catch (error) {
           console.log(error)
         }

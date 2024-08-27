@@ -18,7 +18,9 @@ export class MainPagePage implements OnInit {
   }
   handleAddItem() {
     this.router.navigate(['master'])
-
+  }
+  handleCreateUser(){
+    this.router.navigate(['add-user'])
   }
 
 }

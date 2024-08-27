@@ -42,16 +42,30 @@
         }
 
         .btn {
-          width: 100%;
-          --background: #007bff;
-          --border-radius: 4px;
-          --padding-start: 16px;
-          --padding-end: 16px;
-          --height: 40px;
-          margin-top: 16px;
-
-          &:disabled {
-            --background: #ccc;
+          margin-left: 50px;
+          width: 180px;
+          height: 50px;
+          --border-radius: 6px;
+          --border-width: 2px;
+          --border-color: #007bff;
+          --background: linear-gradient(135deg, #007bff, #00aaff);
+          --color: #fff;
+          --padding-start: 12px;
+          --padding-end: 12px;
+          --padding-top: 4px;
+          --padding-bottom: 4px;
+          --transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+          --box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+        
+          &:hover {
+            --background: linear-gradient(135deg, #006aff, #009aff);
+            transform: translateY(-2px);
+            --box-shadow: 0 6px 10px rgba(0, 123, 255, 0.4);
+          }
+        
+          &:active {
+            transform: translateY(0);
+            --box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
           }
         }
 

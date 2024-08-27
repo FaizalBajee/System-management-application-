@@ -1,85 +1,62 @@
-// Define variables for colors and other styles
-$primary-color: #3880ff;
-$secondary-color: #3dc2ff;
-$accent-color: #f2545b;
-$text-color: #222;
-$background-color: #f4f5f8;
-$header-background: linear-gradient(45deg, $primary-color, $secondary-color);
-$icon-background: #eef2f5;
-$border-radius: 10px;
-$box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+//--background: url('../../../assets/images/webBackground.png') no-repeat center center / cover;
 ion-content {
     --background: url('../../../assets/images/webBackground.png') no-repeat center center / cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-}
-.head {
-    margin: 100px auto;
-    width: 80vw;
-    font-size: 2.2rem;
-    color: white;
-    background: #3dc2ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 24px;
-    padding: 12px;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-    letter-spacing: 1px;
-}
-.grid {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-.item {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: $text-color;
-    background: $icon-background;
-    border-radius: $border-radius;
-    padding: 16px;
-    width: 100%;
-    max-width: 250px;
-    box-shadow: $box-shadow;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    ion-icon {
-        font-size: 3.5rem;
-        color: $primary-color;
-        background: $icon-background;
-        padding: 12px;
-        border-radius: 50%;
-        margin-bottom: 12px;
-        box-shadow: $box-shadow;
-        transition: color 0.3s ease, background 0.3s ease;
-    }
-
-    ion-col {
-        font-size: 1.4rem; // Increased font size
-        font-weight: bold;
+  
+    .head {
+        margin: 100px auto;
+        width: 98vw;
+        font-size: 2.2rem;
+        color: white;
+        background: #3dc2ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        color: $text-color;
-        // margin-top: 2px;
+        margin-bottom: 24px;
+        padding: 12px;
+        border-radius: 20px;
+        box-shadow: 5px;
+        letter-spacing: 1px;
     }
-}
+  
+    .grid {
+      padding: 20px;
+      
+      .item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+  
+        .list {
+          flex: 1;
+          margin: 10px;
+          padding: 20px;
+          background: linear-gradient(135deg, #dde2e2, #9dd5d6);
+          border-radius: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+          cursor: pointer;
+  
+          &:hover {
+            transform: translateY(-5px);
+            background-color: #f0f0f0;
+          }
+  
+          ion-icon {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 10px;
+          }
+  
+          .name {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+  

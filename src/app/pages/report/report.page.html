@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main-page"></ion-back-button>
+    </ion-buttons>
     <ion-title>Complaint Report</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +13,7 @@
         <ion-col class="labelHeader">Master Type</ion-col>
         <ion-col class="labelHeader">Unit</ion-col>
         <ion-col class="labelHeader">Location</ion-col>
-        <ion-col class="labelHeader">Material Type</ion-col>
+        <!-- <ion-col class="labelHeader">Material Type</ion-col> -->
         <ion-col class="labelHeader"></ion-col>
       </ion-row>
       <ion-row class="inputs">
@@ -41,7 +43,7 @@
           <ion-note *ngIf="reportForm.get('location')?.touched && reportForm.get('location')?.invalid">please
             fill this item</ion-note>
         </ion-col>
-        <ion-col>
+        <!-- <ion-col>
           <ion-select fill="outline" (ionChange)="onMaterialChange($event)" formControlName="material_type"
             interface="popover" placeholder="Matirial Type">
             <ion-select-option *ngFor="let data of availableMaterialType"
@@ -49,7 +51,7 @@
           </ion-select>
           <ion-note *ngIf="reportForm.get('material_type')?.touched && reportForm.get('material_type')?.invalid">please
             fill this item</ion-note>
-        </ion-col>
+        </ion-col> -->
         <ion-col>
           <ion-button class="btn" type="submit" [disabled]="reportForm.invalid">Show</ion-button>
         </ion-col>
@@ -69,7 +71,8 @@
       <ion-col>{{data.location}}</ion-col>
       <ion-col>{{data.material_type}}</ion-col>
       <ion-col>{{data.IDNO}}</ion-col>
-      <ion-col>{{data.install_date}}</ion-col>
+      <ion-col>{{data.install_date | date}}</ion-col>
     </ion-row>
+    <ion-row class="NF" *ngIf="complaintInfo === undefined || complaintInfo?.length===0">No Data Found</ion-row>
   </ion-grid>
 </ion-content>

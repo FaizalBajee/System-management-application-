@@ -1,0 +1,95 @@
+ion-content {
+    --background: url('../../../assets/images/bg.jpg') no-repeat center center / cover;
+    padding: 20px;
+  }
+  .list {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .header {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  ion-item {
+    --padding-start: 0;
+    --padding-end: 0;
+    margin-bottom: 15px;
+    border-bottom: none;
+  
+    &.header {
+      --inner-padding-start: 0;
+      --inner-padding-end: 0;
+    }
+    ion-input {
+      --padding-start: 10px;
+      --padding-end: 10px;
+  
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+      }
+    }
+    ion-select {
+      --padding-start: 10px;
+      --padding-end: 10px;
+      --placeholder-color: #888;
+      --color: #333;
+      .select-text {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+      }
+    }
+  }
+  ion-note {
+    color: #797776;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  ion-button {
+    --background: #3498db;
+    --border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    &:disabled {
+      --background: #95a5a6;
+    }
+  }
+  .btn {
+    // margin-left: 50px;
+    width: 350px;
+    height: 50px;
+    --border-radius: 6px;
+    --border-width: 2px;
+    --border-color: #007bff;
+    --background: linear-gradient(135deg, #007bff, #00aaff);
+    --color: #fff;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --padding-top: 4px;
+    --padding-bottom: 4px;
+    --transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    --box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+  
+    &:hover {
+      --background: linear-gradient(135deg, #006aff, #009aff);
+      transform: translateY(-2px);
+      --box-shadow: 0 6px 10px rgba(0, 123, 255, 0.4);
+    }
+  
+    &:active {
+      transform: translateY(0);
+      --box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
+    }
+  }

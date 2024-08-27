@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'master-type',
     loadChildren: () => import('./pages/master-type/master-type.module').then( m => m.MasterTypePageModule)
   },
+  {
+    path: 'add-user',
+    loadChildren: () => import('./pages/add-user/add-user.module').then( m => m.AddUserPageModule)
+  },
   
 ];
 

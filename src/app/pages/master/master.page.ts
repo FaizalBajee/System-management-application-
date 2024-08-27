@@ -37,6 +37,7 @@ export class MasterPage implements OnInit {
   availableLocations: locationModel[] = [];
   materialType: materialTypeModel[] = [];
   availableMaterialType: materialTypeModel[] = [];
+  showComputerDetails: boolean = false;
   constructor(private route: Router, private fb: FormBuilder, private getMonitorService: GetMonitorService, private MTservice: MasterTypeService, private getComplaintInfoService: GetComplaintInfoService, private datePipe: DatePipe, private unitservice: UnitService, private locatonService: LocationService, private materialTypeService: MaterialTypeService, private complaintMasterService: ComplaintMasterService, private uploadService: ComplaintMasterUploadService, private loginService: LoginService) {
     this.masterForm = this.fb.group({
       master_type: ['', Validators.required],
@@ -74,6 +75,32 @@ export class MasterPage implements OnInit {
     this.getUnit();
     this.getLocation();
     this.getMaterialType();
+    this.IT();
+  }
+  IT() {
+    this.masterForm.get('master_type')?.valueChanges.subscribe(value => {
+      this.showComputerDetails = value.master_type === 'IT';
+      this.setValidatorsForComputerDetails();
+    });
+  }
+  setValidatorsForComputerDetails() {
+    const fields = [
+      'user', 'monitor', 'keyboard', 'mouse', 'ram', 'processer',
+      'mother_board', 'cabinet', 'hard_disk', 'os', 'os_key',
+      'printer', 'scanner', 'ip_address', 'mac_id', 'system_name',
+      'department', 'serial_no', 'remark', 'ms_office_key'
+    ];
+
+    fields.forEach(field => {
+      const control = this.masterForm.get(field);
+      if (this.showComputerDetails) {
+        control?.setValidators([Validators.required, Validators.maxLength(50)]);
+      } else {
+        control?.clearValidators();
+        control?.setValidators([Validators.maxLength(50)]);
+      }
+      control?.updateValueAndValidity();
+    });
   }
   getItemIdFun() {
     this.complaintMasterService.complaintMasterService().subscribe(Response => {
@@ -134,13 +161,9 @@ export class MasterPage implements OnInit {
   onMaterialChange(event: any) {
     const masterCode = this.masterForm.value.master_type.master_code;
     console.log("masterCode: ", masterCode);
-    if (this.getItemId === undefined) {
-      this.getItemId = 0;
-    }
-    ++this.getItemId;
-    const newId = `${masterCode}${this.getItemId.toString().padStart(4, '0')}`;
+    let LastId = (this.getItemId || 0) + 1;
+    const newId = `${masterCode}${LastId.toString().padStart(4, '0')}`;
     this.masterForm.get('id_no')?.setValue(newId);
-    // console.log(typeof (this.masterForm.get('id_no')?.value));
   }
   addMaster() {
     if (this.masterForm.valid) {

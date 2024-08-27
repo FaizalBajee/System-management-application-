@@ -10,11 +10,15 @@
     <ion-row class="item">
       <ion-col (click)="handleMasterType()" class="list">
         <ion-icon name="create"></ion-icon>
-        <ion-col>Master Type</ion-col>
+        <ion-col class="name">Master Type</ion-col>
       </ion-col>
       <ion-col (click)="handleAddItem()" class="list">
         <ion-icon name="bag-add"></ion-icon>
-        <ion-col>Item Master</ion-col>
+        <ion-col class="name">Item Master</ion-col>
+      </ion-col>
+      <ion-col (click)="handleCreateUser()" class="list">
+        <ion-icon name="person-add"></ion-icon>
+        <ion-col class="name">Add User</ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
