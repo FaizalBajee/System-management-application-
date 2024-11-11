@@ -12,12 +12,13 @@ import { RoleService } from 'src/app/services/role.service';
 export class LoginScreenPage implements OnInit {
   loginForm!: FormGroup;
   role: roleModel[] = []
+  showUserForm: boolean = false
 
   constructor(private fb: FormBuilder, private route: Router, private loginService: LoginService, private roleService: RoleService) {
     this.loginForm = this.fb.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
-      role: ['', Validators.required]
+      role: ['']
     })
   }
   ngOnInit(): void {
@@ -25,16 +26,16 @@ export class LoginScreenPage implements OnInit {
       this.role = Response.content.roles;
     })
   }
+
+  onRoleChange(event: any) {
+    this.showUserForm = event.detail.value === 'USER'
+  }
+
   signIn() {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value.user, this.loginForm.value.password).subscribe(Response => {
-        if (!Response.success) return alert("invalid user")
-        const userRole = this.loginForm.value.role;
-        const userName = this.loginForm.value.name;
-        const userPassword = this.loginForm.value.password;
-        const accessToken = Response.content.accessToken;
-        this.route.navigate(['main-page']);
-
+        if (!Response.success) return alert(Response.message)
+        this.route.navigate(['/main-page']);
       })
     }
   }

@@ -19,8 +19,13 @@ export class MainPagePage implements OnInit {
   handleAddItem() {
     this.router.navigate(['master'])
   }
-  handleCreateUser(){
+  handleCreateUser() {
     this.router.navigate(['add-user'])
+  }
+  handleLogout() {
+    localStorage.removeItem('role');
+    localStorage.removeItem('token');
+    this.router.navigate(['login-screen']);
   }
 
 }

@@ -42,7 +42,6 @@ export class AddUserPage implements OnInit {
         password: this.registerForm.get('password')?.value,
         isActive: this.registerForm.get('is_active')?.value ? 1 : 0,
       }
-      console.log(typeof(payload.isActive));
       this.registerUserService.registerUserService(payload).subscribe(Response => {
         if (Response.success) {
           alert(Response.message)

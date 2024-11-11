@@ -15,8 +15,15 @@ export class LoginService {
         return this.http.get<serverResponse>(environment.BaseURL + `/login?user=${user}&pass=${pass}`).pipe(
             tap((Response) => {
                 this.storeToken(Response.content.accessToken);
+                this.storeUserRole(Response.content.role);
             })
         )
+    }
+    storeUserRole(role: string) {
+        localStorage.setItem('role', role)
+    }
+    getUserRole(): string | null {
+        return localStorage.getItem('role')
     }
     storeToken(token: string) {
         localStorage.setItem('token', token);

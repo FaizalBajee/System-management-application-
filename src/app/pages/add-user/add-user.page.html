@@ -12,11 +12,11 @@
     <ion-list class="list">
       <ion-item class="header">Registration Form</ion-item>
       <ion-item>
-        <ion-input formControlName="emp_id" style="text-transform: uppercase;" label="EMP ID" label-placement="floating" fill="outline"
+        <ion-input formControlName="emp_id" label="EMP ID" label-placement="floating" fill="outline"
           placeholder="Enter EMP ID"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="name" style="text-transform: uppercase;" label="Employee Name" label-placement="floating" fill="outline"
+        <ion-input formControlName="name" label="Employee Name" label-placement="floating" fill="outline"
           placeholder="Enter Employee Name"></ion-input>
       </ion-item>
       <ion-item>
@@ -31,11 +31,11 @@
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName="user_name" style="text-transform: uppercase;" label="User Name" label-placement="floating" fill="outline"
+        <ion-input formControlName="user_name" label="User Name" label-placement="floating" fill="outline"
           placeholder="Enter User Name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input style="text-transform: uppercase;" formControlName="password" label="Password" label-placement="floating" fill="outline"
+        <ion-input formControlName="password" label="Password" label-placement="floating" fill="outline"
           placeholder="Enter Password"></ion-input>
       </ion-item>
       <ion-item>
@@ -45,6 +45,7 @@
           <ion-select-option [value]="0">No</ion-select-option>
         </ion-select>
       </ion-item>
+      <ion-label style="padding: 10px;color: rgb(94, 93, 93);">Notes : Usernames must be unique</ion-label>
       <ion-button expand="block" class="btn" [disabled]="registerForm.invalid" type="submit">Register</ion-button>
     </ion-list>
   </form>

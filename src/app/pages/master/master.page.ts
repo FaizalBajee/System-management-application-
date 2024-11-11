@@ -75,11 +75,11 @@ export class MasterPage implements OnInit {
     this.getUnit();
     this.getLocation();
     this.getMaterialType();
-    this.IT();
+    this.showComputer();
   }
-  IT() {
-    this.masterForm.get('master_type')?.valueChanges.subscribe(value => {
-      this.showComputerDetails = value.master_type === 'IT';
+  showComputer() {
+    this.masterForm.get('material_type')?.valueChanges.subscribe(value => {
+      this.showComputerDetails = value === 'COMPUTER';
       this.setValidatorsForComputerDetails();
     });
   }

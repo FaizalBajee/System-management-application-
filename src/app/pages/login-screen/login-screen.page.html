@@ -4,23 +4,27 @@
       <ion-item class="header">
         Derik Group Complaint Management
       </ion-item>
+
       <ion-item>
-        <ion-input style="text-transform: uppercase;" formControlName="user" label="USER NAME" label-placement="floating" fill="outline"
-          placeholder="Enter User Name"></ion-input>
+        <ion-select (ionChange)="onRoleChange($event)" class="select" fill="outline" formControlName="role"
+          interface="popover" placeholder="select the role">
+          <ion-select-option *ngFor="let data of role" [value]="data.role">{{data.role}}</ion-select-option>
+        </ion-select>
       </ion-item>
-      <ion-note *ngIf="loginForm.get('user')?.touched && loginForm.get('user')?.invalid">user
-        name require</ion-note>
-      <ion-item>
-        <ion-input style="text-transform: uppercase;" formControlName="password" require label="PASSWORD" label-placement="floating" fill="outline"
-          placeholder="Enter password"></ion-input>
-      </ion-item>
-      <ion-note *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">password
-        require</ion-note>
-      <ion-select class="select" fill="outline" formControlName="role" interface="popover"
-        placeholder="select the role">
-        <ion-select-option *ngFor="let data of role" [value]="data.role">{{data.role}}</ion-select-option>
-      </ion-select>
-      <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">Sign In</ion-button>
+      <div *ngIf="showUserForm; else normal">
+        <ion-label>Hi faizal</ion-label>
+      </div>
+      <ng-template #normal>
+        <ion-item>
+          <ion-input formControlName="user" label="USER NAME" label-placement="floating" fill="outline"
+            placeholder="Enter User Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="password" require label="PASSWORD" label-placement="floating" fill="outline"
+            placeholder="Enter password"></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit">Sign In</ion-button>
+      </ng-template>
     </ion-list>
   </form>
 </ion-content>

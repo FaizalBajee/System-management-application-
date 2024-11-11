@@ -5,6 +5,11 @@
 </ion-header> -->
 
 <ion-content [fullscreen]="true">
+
+  <ion-button class="logout-button" (click)="handleLogout()" expand="block" fill="outline">
+    <ion-icon name="log-out"></ion-icon>
+    <ion-label>Logout</ion-label>
+  </ion-button>
   <ion-label class="head">Main Page</ion-label>
   <ion-grid class="grid">
     <ion-row class="item">
